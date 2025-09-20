@@ -13,7 +13,7 @@ const ProductDetail = () => {
 
   useEffect(() => {
   axios
-    .get(`${import.meta.env.VITE_API_URL}/api/products/${id}/`)
+    .get(`${import.meta.env.VITE_API_URL}/products/${id}/`)
     .then((res) => {
       setProduct(res.data);
       setSelectedColor(res.data.colors[0]?.name ?? '');
