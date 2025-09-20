@@ -12,15 +12,15 @@ const ProductDetail = () => {
   const [selectedImage, setSelectedImage] = useState(0);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/api/products/${id}/`) // Replace with your backend API
-      .then((res) => {
-        setProduct(res.data);
-        setSelectedColor(res.data.colors[0]?.name ?? '');
-        setSelectedSize(res.data.sizes[0]?.value ?? '');
-      })
-      .catch((err) => console.log(err));
-  }, [id]);
+  axios
+    .get(`${import.meta.env.VITE_API_URL}/api/products/${id}/`)
+    .then((res) => {
+      setProduct(res.data);
+      setSelectedColor(res.data.colors[0]?.name ?? '');
+      setSelectedSize(res.data.sizes[0]?.value ?? '');
+    })
+    .catch((err) => console.log("Fetch error:", err));
+}, [id]);
 
   const handleQuantityChange = (action) => {
     if (action === 'increment') setQuantity((prev) => prev + 1);
